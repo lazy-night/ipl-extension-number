@@ -1,9 +1,20 @@
 $ ->
   jQuery.getJSON "js/extension_number", (json) ->
-    cols = $("#ext-table > div :first")
+    #$("div.span2 > div").addClass("row-fluid")
+    tag = "div"
     for user in json.users
+      content = "<#{tag} class=\"user\">#{user.kanji}</#{tag}>"
       if user.extNo?
-        content = "<p>" + user.kanji + "(" + user.extNo + ")</p>"
-      else
-        content = "<p>" + user.kanji + "</p>"
-      $("#" + user.seat).append(content).addClass(user.group)
+        content +=  "<#{tag} class=\"seat #{telOrPhs(user.isPhs?)}\">#{user.extNo}</#{tag}>"
+      $("##{user.seat}").append(content).addClass(group(user.group))
+
+  telOrPhs = (isPhs) ->
+    if isPhs
+      "phs"
+    else
+      "tel"
+  group = (group) ->
+    if group?
+      group
+    else
+      "Other"

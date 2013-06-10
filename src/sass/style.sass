@@ -1,16 +1,77 @@
-div#ext-table
-  div.span2
-    div
-      border: solid
-      height: 40px
-      margin: 2px
-      text-indent: 5px
-      font-size: 12
+$gray: #eee
+$black: #555
+$ea-color: #1ba1e2
+$it-color: #d80073
+$ss-color: #a2c139
+$other-color: #ccc
+$tel-color: #222
+$phs-color: #a05000
+$box-height: 40px
+$left-border-width: 10px
+
+*
+  color: $black
+  font-family: 'Lucida Grande','Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3',Meiryo, メイリオ, sans-serif
+
+body
+  padding: 10px
+
+.line
+  > div
+    border:
+      style: solid
+      width: 1px
+      color: $gray
+    height: $box-height
+    margin: 2px
+    text-indent: 5px
+
+div.EA, div.IT, div.SS, div.Other
+  border:
+    left-width: $left-border-width
+    left-style: solid
+
+div.EA
+  //background-color: $ea-color
+  border:
+    color: $ea-color
+
+div.IT
+  //background-color: $it-color
+  border:
+    color: $it-color
 
 div.SS
-  background-color: #9acde7
-div.EA
-  background-color: #f9e3aa
-div.IT
-  background-color: #dfecaa
+  //background-color: $ss-color
+  border:
+    color: $ss-color
 
+div.Other
+  //background-color: $other-color
+  border:
+    color: $other-color
+
+.user
+  border-style: none
+  font:
+    size: medium
+    weight: bold
+  float: left
+  position: absolute
+  line-height: $box-height
+
+.seat
+  border-style: none
+  text-align: right
+  line-height: $box-height
+  margin-right: 5px
+  font:
+    size: large
+    weight: bold
+
+.tel
+  color: $tel-color
+
+.phs
+  color: $phs-color
+  //text-decoration: underline
