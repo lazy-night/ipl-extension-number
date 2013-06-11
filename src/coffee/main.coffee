@@ -1,5 +1,5 @@
 $ ->
-  jQuery.getJSON "js/extension_number", (json) ->
+  jQuery.getJSON "http://192.168.5.41:10000/api/extension_number?callback=?", (json) ->
     #$("div.span2 > div").addClass("row-fluid")
     tag = "div"
     for user in json.users
@@ -13,8 +13,11 @@ $ ->
       "phs"
     else
       "tel"
+
   group = (group) ->
     if group?
       group
     else
       "Other"
+
+
