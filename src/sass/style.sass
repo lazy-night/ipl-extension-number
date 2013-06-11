@@ -6,7 +6,7 @@ $ss-color: #a2c139
 $other-color: #ccc
 $tel-color: #222
 $phs-color: #a05000
-$box-height: 40px
+$box-height: 60px
 $left-border-width: 10px
 
 *
@@ -14,7 +14,24 @@ $left-border-width: 10px
   font-family: 'Lucida Grande','Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3',Meiryo, メイリオ, sans-serif
 
 body
-  padding: 10px
+  padding-top: 10px
+
+abbr.employeeNo
+  text-decoration: none
+  border-bottom-width: 0px
+
+#title
+  float: left
+
+#date
+  float: right
+  line-height: 40px
+  font:
+    size: xx-small
+    style: italic
+
+#clear
+  clear: both
 
 .line
   > div
@@ -30,6 +47,7 @@ div.EA, div.IT, div.SS, div.Other
   border:
     left-width: $left-border-width
     left-style: solid
+  padding-top: 2px
 
 div.EA
   //background-color: $ea-color
@@ -57,17 +75,27 @@ div.Other
     size: medium
     weight: bold
   float: left
-  position: absolute
-  line-height: $box-height
 
 .seat
   border-style: none
   text-align: right
-  line-height: $box-height
   margin-right: 5px
   font:
     size: large
     weight: bold
+
+.status
+  clear: left
+  font:
+    size: small
+    style: oblique
+  background-color: #f2f2f2
+  width: 100%
+  overflow: hidden
+  white-space: nowrap
+  -o-text-overflow: ellipsis
+  text-overflow: ellipsis
+  margin-top: 5px
 
 .tel
   color: $tel-color
