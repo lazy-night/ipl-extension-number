@@ -27,7 +27,7 @@ $ ->
     #$("div.span2 > div").addClass("row-fluid")
     tag = "div"
     for user in json.users
-      content = "<#{tag} id=\"no-#{user.employeeNo}\" class=\"user\"><abbr class=\"employeeNo\" title=社員番号:#{user.employeeNo}>#{user.kanji}</abbr></#{tag}>"
+      content = "<#{tag} id=\"no-#{user.employeeNo}\" class=\"user\"><abbr class=\"employeeNo\" title=\"社員番号:#{user.employeeNo}\">#{user.kanji}</abbr></#{tag}>"
       content +=  "<#{tag} class=\"seat #{telOrPhs(user.isPhs?)}\">#{extNo(user.extNo)}</#{tag}>"
       $("##{user.seat}").append(content).addClass(group(user.group))
 
@@ -35,7 +35,7 @@ $ ->
       for schedule in schedules
         continue if schedule.status == "　"
         target = $("#no-#{schedule.employeeNo}").parent()
-        target.append("<div class=\"status\"><abbr title=#{schedule.status}>#{schedule.status}</abbr></div>")
+        target.append("<div class=\"status\"><abbr title=\"#{schedule.status}\">#{schedule.status}</abbr></div>")
 
   $("#date").html("取得: " + getNow())
 
