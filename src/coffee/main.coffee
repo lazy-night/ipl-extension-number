@@ -37,7 +37,7 @@ $ ->
         if schedule.status != "　"
           target.append("<div class=\"status\" title=\"#{schedule.status}\">#{schedule.status}</div>")
         else
-          target.append("<div class=\"emptyStatus\" title=\"#{schedule.status}\">&nbsp;</div>")
+          target.append("<div class=\"emptyStatus\">&nbsp;</div>")
         target.append("<div class=\"defaultStatus\" title=\"#{schedule.default}\">#{schedule.default}</div>")
 
     modal = $("#modalSchedule")
