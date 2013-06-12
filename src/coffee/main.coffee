@@ -31,10 +31,25 @@ $ ->
       content +=  "<#{tag} class=\"seat #{telOrPhs(user.isPhs?)}\">#{extNo(user.extNo)}</#{tag}>"
       $("##{user.seat}").append(content).addClass(group(user.group))
 
-    jQuery.getJSON api + "/schedule?callback=?", (schedules) ->
+    jQuery.getJSON api + "/schedule/today?callback=?", (schedules) ->
       for schedule in schedules
         continue if schedule.status == "　"
         target = $("#no-#{schedule.employeeNo}").parent()
         target.append("<div class=\"status\" title=\"#{schedule.status}\">#{schedule.status}</div>")
+
+    modal = $("#modalSchedule")
+    label = $("#modalLabel")
+    modalBody = $("#modalSchedule > .modal-body")
+    $("div.user").click ->
+      target = $(this)
+      employeeNo = target.attr("id").slice(3)
+      jQuery.getJSON("#{api}/schedule/#{employeeNo}?callback=?", (json) ->
+        html = ""
+        for day in json
+          html += "<p>#{day.day}(#{day.dayOfWeek}): #{day.status}</p>"
+        label.html("#{target.html()}さんの予定")
+        modalBody.html(html)
+        modal.modal()
+      )
 
   $("#date").html("取得: " + getNow())
