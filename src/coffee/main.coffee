@@ -36,6 +36,7 @@ $ ->
         continue if schedule.status == "　"
         target = $("#no-#{schedule.employeeNo}").parent()
         target.append("<div class=\"status\" title=\"#{schedule.status}\">#{schedule.status}</div>")
+        target.append("<div class=\"defaultStatus\" title=\"#{schedule.default}\">#{schedule.default}</div>")
 
     modal = $("#modalSchedule")
     label = $("#modalLabel")

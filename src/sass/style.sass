@@ -6,8 +6,12 @@ $ss-color: #a2c139
 $other-color: #ccc
 $tel-color: #222
 $phs-color: #a05000
+$status-color: #555
+$default-status-color: #888
 $box-height: 60px
 $left-border-width: 10px
+$background-color: #eee
+$color-percentage: 15%
 
 *
   color: $black
@@ -15,6 +19,7 @@ $left-border-width: 10px
 
 body
   padding-top: 10px
+  background-color: #fbfbfb
 
 abbr.employeeNo, abbr.schedule
   text-decoration: none
@@ -22,6 +27,13 @@ abbr.employeeNo, abbr.schedule
 
 #title
   float: left
+
+#version
+  margin-left: 5px
+  float: left
+  font:
+    weight: bold
+  line-height: 100%
 
 #date
   float: right
@@ -43,6 +55,8 @@ abbr.employeeNo, abbr.schedule
     margin: 2px
     text-indent: 5px
     padding-top: 2px
+    padding-bottom: 2px
+    background-color: #fff
 
 div.EA, div.IT, div.SS, div.Other
   border:
@@ -87,18 +101,37 @@ div.Other
     weight: bold
   float: right
 
-.status
+.status, .defaultStatus
   clear: both
-  font:
-    size: small
-    style: oblique
-  background-color: #f2f2f2
   width: 100%
   overflow: hidden
   white-space: nowrap
   -o-text-overflow: ellipsis
   text-overflow: ellipsis
+
+.status
+  //background-color: #f2f2f2
   margin-top: 5px
+  font:
+    size: small
+    style: oblique
+  color: #fff
+  background-color: #adadad
+
+.EA > .status
+  background-color: lighten($ea-color, 20%)
+
+.IT > .status
+  background-color: lighten($it-color, 30%)
+
+.SS > .status
+  background-color: lighten($ss-color, 10%)
+
+.defaultStatus
+  font:
+    size: x-small
+    //style: oblique
+  color: $status-color
 
 .tel
   color: $tel-color
