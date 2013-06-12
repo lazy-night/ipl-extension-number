@@ -101,7 +101,7 @@ div.Other
     weight: bold
   float: right
 
-.status, .defaultStatus
+.status, .defaultStatus, .emptyStatus
   clear: both
   width: 100%
   overflow: hidden
@@ -109,8 +109,7 @@ div.Other
   -o-text-overflow: ellipsis
   text-overflow: ellipsis
 
-.status
-  //background-color: #f2f2f2
+.status, .emptyStatus
   margin-top: 5px
   font:
     size: small
@@ -126,6 +125,9 @@ div.Other
 
 .SS > .status
   background-color: lighten($ss-color, 10%)
+
+.emptyStatus
+  background-color: lighten($other-color, 15%)
 
 .defaultStatus
   font:
