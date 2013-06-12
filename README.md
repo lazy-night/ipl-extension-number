@@ -1,35 +1,41 @@
 IPL 座席表
 ---
-[192.168.5.41:9292/](http://192.168.5.41:9292/)
+[192.168.5.41:9292/ (社内のみ)](http://192.168.5.41:9292/)
 
-This uses `guard` and `sprockets` for release a product automatically:
+* [3100/IplApi](https://bitbucket.org/3100/iplapi) のAPIを利用します。
 
-* `coffee-script` to `javascript`
-* `sass` to `css`
-* `slim` to `html`
+# 開発方針
 
-It contains `twitter-bootstrap` and `jQuery` mainly because I use them. Remove them if you don't need.
+開発時には `guard` と `sprockets` を用いて、最終コードを自動生成するようにしています。
 
-# Setup
+* `coffee-script` から `javascript`
+* `sass` から `css`
+* `slim` から `html`
+
+`src` フォルダを監視し、 `public` フォルダに変換ファイルを配置します。
+
+# ソースコードの生成
+
+初回時には `bundler` を用いて必要なライブラリを導入しておく必要があります。
 
     bundle install
+
+`src` フォルダの監視を開始するのは
+
     guard
 
-It  monitors `src` folder and generate files into `public` folder.
+と入力します。
 
-You can also generate files manually with `rake` command:
+既にあるファイルから最終コードを生成するには `rake` コマンドを用います。
 
-    bundle install
     rake
 
 # Test Server
 
-To start web server, `rack` is available:
+開発時にはテストサーバがあると便利です。そのために `rack` を利用します。
 
     rackup
 
-Or, with `-p` option for specifying the port:
+`-p` オプションでポートを指定することも可能です。
 
     rackup -p <port>
-
-Modify `config.ru` if needed.
