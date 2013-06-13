@@ -39,3 +39,8 @@ IPL 座席表
 `-p` オプションでポートを指定することも可能です。
 
     rackup -p <port>
+    
+---
+# Thanks
+
+[zgramana / Bitbucket Ribbons — Bitbucket](https://bitbucket.org/zgramana/bitbucket-ribbons)
