@@ -4,6 +4,11 @@ $ea-color: #1ba1e2
 $it-color: #d80073
 $ss-color: #a2c139
 $other-color: #ccc
+$ea-color-light: lighten($ea-color, 20%)
+$it-color-light: lighten($it-color, 30%)
+$ss-color-light: lighten($ss-color, 10%)
+$other-color-light: lighten($other-color, 15%)
+$other-color-dark: darken($other-color, 10%)
 $tel-color: #222
 $phs-color: #a05000
 $status-color: #555
@@ -20,10 +25,6 @@ $color-percentage: 15%
 body
   padding-top: 10px
   background-color: #fbfbfb
-
-abbr.employeeNo, abbr.schedule
-  text-decoration: none
-  border-bottom-width: 0px
 
 #title
   float: left
@@ -68,25 +69,21 @@ div.EA, div.IT, div.SS, div.Other
   border:
     left-width: $left-border-width
     left-style: solid
-  //padding-top: 2px
+  position: relative
 
 div.EA
-  //background-color: $ea-color
   border:
     color: $ea-color
 
 div.IT
-  //background-color: $it-color
   border:
     color: $it-color
 
 div.SS
-  //background-color: $ss-color
   border:
     color: $ss-color
 
 div.Other
-  //background-color: $other-color
   border:
     color: $other-color
 
@@ -123,22 +120,36 @@ div.Other
   color: #fff
   background-color: #adadad
 
-.EA > .status
-  background-color: lighten($ea-color, 20%)
+.EA > .status,
+  background-color: $ea-color-light
 
-.IT > .status
-  background-color: lighten($it-color, 30%)
+.IT > .status,
+  background-color: $it-color-light
 
 .SS > .status
-  background-color: lighten($ss-color, 10%)
+  background-color: $ss-color-light
+
+.Other > .status
+  background-color: $other-color-dark
 
 .emptyStatus
-  background-color: lighten($other-color, 15%)
+  background-color: $other-color-light
+
+.EA.out
+  border-color: lighten($ea-color-light, 20%)
+
+.IT.out
+  border-color: lighten($it-color-light, 20%)
+
+.SS.out
+  border-color: lighten($ss-color-light, 20%)
+
+.Other.out
+  border-color: lighten($other-color-light, 0%)
 
 .defaultStatus
   font:
     size: x-small
-    //style: oblique
   color: $status-color
 
 .tel
@@ -146,4 +157,19 @@ div.Other
 
 .phs
   color: $phs-color
-  //text-decoration: underline
+
+div.out
+  border:
+    color: #ccc
+
+.out > .user, .out > .status, .out > .defaultStatus
+  color: #bbb
+
+.out > .status
+  background-color: #ddd
+
+.out > .tel
+  color: lighten($tel-color, 50%)
+
+.out > .phs
+  color: lighten($phs-color, 50%)

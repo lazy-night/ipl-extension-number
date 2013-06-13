@@ -23,23 +23,17 @@ $ ->
 
   api = "http://192.168.5.41:10000/api"
 
-  jQuery.getJSON api + "/extension_number?callback=?", (json) ->
-    #$("div.span2 > div").addClass("row-fluid")
-    tag = "div"
-    for user in json.users
-      content = "<#{tag} id=\"no-#{user.employeeNo}\" class=\"user\" title=\"社員番号:#{user.employeeNo}\">#{user.kanji}</#{tag}>"
-      content +=  "<#{tag} class=\"seat #{telOrPhs(user.isPhs?)}\">#{extNo(user.extNo)}</#{tag}>"
-      $("##{user.seat}").append(content).addClass(group(user.group))
+  updateStatus = (schedules) ->
+    for schedule in schedules
+      target = $("#no-#{schedule.employeeNo}").parent()
+      if schedule.status != "　"
+        target.append("<div class=\"status\" title=\"#{schedule.status}\">#{schedule.status}</div>")
+      else
+        target.append("<div class=\"emptyStatus\">&nbsp;</div>")
+      target.append("<div class=\"defaultStatus\" title=\"#{schedule.default}\">#{schedule.default}</div>")
+      target.addClass("out") if schedule.out == true
 
-    jQuery.getJSON api + "/schedule/today?callback=?", (schedules) ->
-      for schedule in schedules
-        target = $("#no-#{schedule.employeeNo}").parent()
-        if schedule.status != "　"
-          target.append("<div class=\"status\" title=\"#{schedule.status}\">#{schedule.status}</div>")
-        else
-          target.append("<div class=\"emptyStatus\">&nbsp;</div>")
-        target.append("<div class=\"defaultStatus\" title=\"#{schedule.default}\">#{schedule.default}</div>")
-
+  addClickEvent = ->
     modal = $("#modalSchedule")
     label = $("#modalLabel")
     modalBody = $("#modalSchedule > .modal-body")
@@ -54,5 +48,16 @@ $ ->
         modalBody.html(html)
         modal.modal()
       )
+
+  updateUserInfo = (users) ->
+    for user in users
+      content = "<div id=\"no-#{user.employeeNo}\" class=\"user\" title=\"社員番号:#{user.employeeNo}\">#{user.kanji}</div>"
+      content +=  "<div class=\"seat #{telOrPhs(user.isPhs?)}\">#{extNo(user.extNo)}</div>"
+      $("##{user.seat}").append(content).addClass(group(user.group))
+
+  jQuery.getJSON api + "/extension_number?callback=?", (json) ->
+    updateUserInfo json.users
+    jQuery.getJSON api + "/schedule/today?callback=?", updateStatus
+    addClickEvent()
 
   $("#date").html("取得: " + getNow())
