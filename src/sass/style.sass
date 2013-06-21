@@ -1,16 +1,19 @@
-$gray: #eee
+$gray: lighten(#eee, 10%)
 $black: #555
-$ea-color: #1ba1e2
-$it-color: #d80073
-$ss-color: #a2c139
+$ea-color: lighten(desaturate(#1ba1e2, 10%), 5%)
+$it-color: lighten(desaturate(#d80073, 20%), 10%)
+//$ss-color: saturate(#a2c139, 15%)
+$ss-color: lighten(desaturate(#1abc9c, 20%), 15%)
 $other-color: #ccc
-$ea-color-light: lighten($ea-color, 20%)
-$it-color-light: lighten($it-color, 30%)
+$ea-color-light: lighten($ea-color, 15%)
+$it-color-light: lighten($it-color, 20%)
 $ss-color-light: lighten($ss-color, 10%)
 $other-color-light: lighten($other-color, 15%)
 $other-color-dark: darken($other-color, 10%)
 $tel-color: #222
-$phs-color: #a05000
+$phs-color: #e67e22
+//#f39c12
+//#a05000
 $status-color: #555
 $default-status-color: #888
 $box-height: 60px
@@ -160,16 +163,26 @@ div.Other
 
 div.out
   border:
-    color: #ccc
+    color: $gray
 
 .out > .user, .out > .status, .out > .defaultStatus
-  color: #bbb
+  color: lighten($black, 35%)
 
 .out > .status
-  background-color: #ddd
+  background-color: #dddddd
 
 .out > .tel
   color: lighten($tel-color, 50%)
 
 .out > .phs
-  color: lighten($phs-color, 50%)
+  color: lighten($phs-color, 20%)
+
+div.drag_target
+  border-style: dashed
+  border-width: 2px
+  padding-top: 1px
+  padding-bottom: 1px
+  padding-left: $left-border-width - 2
+  >.seat
+    padding-right: 0px
+    margin-right: 4px
