@@ -21,7 +21,7 @@ $ ->
     now = new Date()
     "#{now.getFullYear()}/#{now.getMonth()+1}/#{now.getDate()} #{now.getHours()}:#{now.getMinutes()}"
 
-  api = "http://192.168.5.41:10000/api"
+  api = "http://192.168.5.67:9292/api"
 
   updateStatus = (schedules) ->
     for schedule in schedules
