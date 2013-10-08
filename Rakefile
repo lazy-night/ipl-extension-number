@@ -11,9 +11,10 @@
      assets = environment.find_asset File.basename bundle
      assets.write_to bundle
    end
-   
+
    # TODO: need a better way.
-   `slimrb -p src/slim/index.slim > public/index.html`
+   `slimrb -p src/slim/index.slim   > public/index.html`
+   `slimrb -p src/slim/version.slim > public/version.html`
  end
 
  task :default => :compile

@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    meta charset="UTF-8"
+    link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"
+    link href="/lib/css/bootstrap.min.css" rel="stylesheet"
+    link href="css/application.css" rel="stylesheet"
+    script src="lib/js/jquery-1.9.1.min.js"
+    script src="lib/js/bootstrap.min.js"
+    script src="js/application.js"
+    title IPL内線表 - 更新履歴
+  body
+    a#ribbon href="https://bitbucket.org/3100/iplextensionnumber"
+      img src="img/bitbucket-ribbon-dark-gray.png"
+    div.container
+      h1#title IPL内線表
+      div#version
+        a href="/" 戻る
+      br#clear
+      h2 更新履歴
+      h3 v0.2.3
+      ul
+        li サーバ側のデータ取得部分を分離し、レスポンスに時間がかからないようにしました。(週間予定は従来通り)
+        li 本日の予定については、現状3分毎にデータを更新してます。
+      h3 v0.2.2
+      ul
+        li 忘れた。
+

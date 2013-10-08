@@ -7,6 +7,7 @@ html
     link href="css/application.css" rel="stylesheet"
     javascript:
       var TogetherJSConfig_findRoom = {prefix: "users", max:5};
+      var TogetherJSConfig_autoStart = true;
       var TogetherJSConfig_suppressJoinConfirmation = true;
       var TogetherJSConfig_storagePrefix = "tjs_todo";
 
@@ -20,7 +21,8 @@ html
       img src="img/bitbucket-ribbon-dark-gray.png"
     div.container
       h1#title IPL内線表
-      div#version v0.2.2
+      div#version
+        a href="/version.html" v0.2.3
       div#date
       br#clear
       div.row-fluid
