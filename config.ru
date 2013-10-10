@@ -1,3 +1,8 @@
+require 'rack/contrib'
+use Rack::StaticCache,
+  :urls => ["/css", "/js", "/lib", "/img"],
+  :root => "public"
+
 use Rack::Static,
   :urls => ["/css", "/js", "/lib", "/img"],
   :root => "public"

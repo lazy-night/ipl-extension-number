@@ -26,18 +26,20 @@ $ ->
   updateStatus = (schedules) ->
     for schedule in schedules
       target = $("#no-#{schedule.employeeNo}").parent()
+      appended = ''
       if schedule.status != "　"
-        target.append("<div class=\"status\" title=\"#{schedule.status}\">#{schedule.status}</div>")
+        appended += "<div class=\"status\" title=\"#{schedule.status}\">#{schedule.status}</div>"
       else
-        target.append("<div class=\"emptyStatus\">&nbsp;</div>")
-      target.append("<div class=\"defaultStatus\" title=\"#{schedule.default}\">#{schedule.default}</div>")
+        appended += "<div class=\"emptyStatus\">&nbsp;</div>"
+      appended += "<div class=\"defaultStatus\" title=\"#{schedule.default}\">#{schedule.default}</div>"
+      target.append(appended)
       target.addClass("out") if schedule.out == true
 
   addClickEvent = ->
     modal = $("#modalSchedule")
     label = $("#modalLabel")
-    modalBody = $("#modalSchedule > .modal-body")
-    $("div.user").click ->
+    modalBody = $("#modal-body")
+    $(".user").click ->
       target = $(this)
       employeeNo = target.attr("id").slice(3)
       jQuery.getJSON("#{api}/schedule/#{employeeNo}?callback=?", (json) ->
