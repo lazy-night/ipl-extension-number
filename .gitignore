@@ -2,3 +2,6 @@
 *.swp
 bin/js/*
 bin/css/*
+tags
+tmp/
+log/
