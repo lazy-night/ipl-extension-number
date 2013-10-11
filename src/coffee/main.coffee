@@ -42,14 +42,25 @@ $ ->
     $(".user").click ->
       target = $(this)
       employeeNo = target.attr("id").slice(3)
+      date = new Date()
       jQuery.getJSON("#{api}/schedule/#{employeeNo}?callback=?", (json) ->
         html = ""
         for day in json
-          html += "<p>#{day.day}(#{day.dayOfWeek}): #{day.status}</p>"
+          html += "<p><span class=\"#{holidaySpan(date)}\" title=\"#{holidayName(date)}\">#{day.day}(#{day.dayOfWeek})</span>: #{day.status}</p>"
+          date.setDate(date.getDate() + 1)
         label.html("#{target.html()}さんの予定")
         modalBody.html(html)
         modal.modal()
       )
+
+  holidaySpan = (date) ->
+    return "holiday"  if date.isHoliday(true)
+    return "saturday" if date.getDay() == 6
+    return "sunday"   if date.getDay() == 0
+    return ""
+
+  holidayName = (date) ->
+    date.isHoliday(true) || ""
 
   updateUserInfo = (users) ->
     for user in users
