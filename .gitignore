@@ -5,3 +5,4 @@ bin/css/*
 tags
 tmp/
 log/
+public/

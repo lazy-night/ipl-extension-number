@@ -1,6 +1,5 @@
 IPL 座席表
 ---
-[192.168.5.41:9292/ (社内のみ)](http://192.168.5.41:9292/)
 
 * [3100/IplApi](https://bitbucket.org/3100/iplapi) のAPIを利用します。
 
@@ -13,6 +12,22 @@ IPL 座席表
 * `slim` から `html`
 
 `src` フォルダを監視し、 `public` フォルダに変換ファイルを配置します。
+
+# 準備
+
+IplApiのURLを環境変数`IPL_API_URL`で設定します。
+
+## DHCPでの運用
+
+IplApiも同マシン上で運用している場合の例
+
+.bashrcや.zshrcなどで
+~~~
+IP=`ifconfig eth0|grep inet|awk '{print $2}'|cut -d: -f2`
+export IPL_API_URL="$IP:9291"
+~~~
+
+等としておくと便利かもしれません。
 
 # ソースコードの生成
 
@@ -39,7 +54,7 @@ IPL 座席表
 `-p` オプションでポートを指定することも可能です。
 
     rackup -p <port>
-    
+
 ---
 # Thanks
 
